@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="cal.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+  <section>
+    <div><input type="text" id="display"></div>
+    <button onclick="appendcharacter(7)">7</button>
+    <button onclick="appendcharacter(8)">8</button>
+    <button onclick="appendcharacter(9)">9</button>
+    <button onclick="deletelast()">DEL</button>
+    <button onclick="cleardisplay()">AC</button><br>
+    <button onclick="appendcharacter(4)">4</button>
+    <button onclick="appendcharacter(5)">5</button>
+    <button onclick="appendcharacter(6)">6</button>
+    <button onclick="appendcharacter(`*`)">*</button>
+    <button onclick="appendcharacter(`/`)">/</button><br>
+    <button onclick="appendcharacter(1)">1</button>
+    <button onclick="appendcharacter(2)">2</button>
+    <button onclick="appendcharacter(3)">3</button>
+    <button onclick="appendcharacter(`+`)">+</button>
+    <button onclick="appendcharacter(`-`)">-</button><br>
+    <button onclick="appendcharacter(0)">0</button>
+    <button onclick="appendcharacter(`.`)">.</button>
+    <button onclick="rase()">^2</button>
+    <button onclick="cube()">^3</button>
+    <button onclick="CAL(`=`)">=</button>
+  </section>
+</body>
+</html>
+
+<style>
+    button{
+    width: 40px;
+    height: 40px;
+}
+#display{
+    margin-bottom: 12px;
+    width: 242px;
+}
+section{
+    margin-top: 200px;
+    margin-left: 550px;
+    background-color: rgb(156, 148, 148);
+    width: 250px;
+}
+button:hover{
+    color: blue;
+    background-color: black;
+    border-color: black;
+}
+</style>
+
+<script>
+    function deletelast(){
+        let currentdisplay= document.getElementById("display").value;
+        document.getElementById("display").value=currentdisplay.slice(0,-1);
+    }
+    function cleardisplay(){
+        document.getElementById("display").value="";
+    }
+    function appendcharacter(disk){
+        document.getElementById("display").value+=disk;
+    }
+        
+    function CAL(){
+        let expression =document.getElementById("display").value;
+        try {
+            document.getElementById("display").value=eval(expression);
+        } 
+        catch (error) {
+            document.getElementById("display").value=("error");
+        }
+    }
+    function rase(){
+    let rase= document.getElementById("display").value;
+    document.getElementById("display").value=rase*rase;
+    }
+    function cube(){
+    let cube= document.getElementById("display").value;
+    document.getElementById("display").value=cube*cube*cube;
+    }
+</script>
